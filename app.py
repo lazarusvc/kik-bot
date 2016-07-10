@@ -4,8 +4,8 @@ from kik import KikApi, Configuration
 from kik.messages import messages_from_json, TextMessage
 
 app = Flask(__name__)
-kik = KikApi(BOT_USERNAME, BOT_API_KEY)
-kik.set_configuration(Configuration(webhook=YOUR_WEBHOOK))
+kik = KikApi("Suggestionbot", "de3b3ecd-f085-44a0-9103-f899467ecdf4")
+kik.set_configuration(Configuration(webhook="https://calm-caverns-74991.herokuapp.com/incoming"))
 
 #**********************************************************#
 # // INCOMING ROUTE //
