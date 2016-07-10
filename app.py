@@ -38,6 +38,10 @@ def incoming():
     for message in messages:
         if isinstance(message, TextMessage):
 
+            text = 'Hi, welcome to Suggestionbot, leave suggestions on the level of Service recieved at Julies'
+            text = 'to help make the world a better place' 
+            send_text(message.from_user, message.chat_id, text, ["Get started"])
+
             '''
             kik.send_messages([
                 TextMessage(
