@@ -45,7 +45,7 @@ def incoming():
                     chat_id=message.chat_id,
                     body=message.body) ])
             '''
-            if 'hi' in message.body or 'hello' in message.body:
+            if 'Hi' in message.body:
                 text = 'Hi {}!'.format(message.from_user)
             else:
                 text = 'I don\'t understand message'
