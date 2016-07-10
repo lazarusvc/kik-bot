@@ -18,11 +18,18 @@ def incoming():
     messages = messages_from_json(request.json['messages'])
     for message in messages:
         if isinstance(message, TextMessage):
+            '''
             kik.send_messages([
                 TextMessage(
                     to=message.from_user,
                     chat_id=message.chat_id,
                     body=message.body) ])
+            '''
+                if 'hi' in message.body.lower() or 'hello' in message.body.lower():
+                    text = 'Hi {}!'.format(message.from_user)
+                else:
+                    text = 'I don\'t understand message'
+                send_text(message.from_user, message.chat_id, text)
 
     return Response(status=200)
 
