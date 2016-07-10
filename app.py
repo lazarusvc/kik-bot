@@ -44,11 +44,11 @@ def incoming():
                     chat_id=message.chat_id,
                     body=message.body) ])
             '''
-            if 'hi' in message.body.lower() or 'hello' in message.body.lower():
+            if 'hi' in message.body or 'hello' in message.body:
                 text = 'Hi {}!'.format(message.from_user)
             else:
                 text = 'I don\'t understand message'
-                send_text(message.from_user, message.chat_id, text)
+                send_text(message.from_user, message.chat_id, text, ["Okay! What ever..."])
 
     return Response(status=200)
 
