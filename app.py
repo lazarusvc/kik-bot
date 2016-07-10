@@ -1,7 +1,8 @@
 from flask import Flask, request, Response
 #*****************************************
 from kik import KikApi, Configuration
-from kik.messages import messages_from_json, TextMessage
+from kik.messages import (LinkMessage, SuggestedResponseKeyboard, TextMessage,
+                          TextResponse, messages_from_json)
 
 app = Flask(__name__)
 kik = KikApi("Suggestionbot", "de3b3ecd-f085-44a0-9103-f899467ecdf4")
