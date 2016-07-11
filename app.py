@@ -51,12 +51,11 @@ def incoming():
             if 'Hi' in message.body or 'Hello' in message.body:
                 text = 'Hi {0}! Welcome to Suggestionbot'.format(message.from_user)
                 send_text(message.from_user, message.chat_id, text)
+            elif 'Get started' in message.body:
+                send_text(message.from_user, message.chat_id, 'Alrightee ... ', ["what Business place where you?"])    
             else:
                 text = 'I don\'t understand your message, please Tap "Get started"'
                 send_text(message.from_user, message.chat_id, text, ["Get started"])
-
-            if 'Get started' in message.body:
-                send_text(message.from_user, message.chat_id, 'Alrightee ... ', ["what Business place where you?"])
                     
 
     return Response(status=200)
