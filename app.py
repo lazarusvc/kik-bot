@@ -43,10 +43,10 @@ def incoming():
                 send_text(message.from_user, message.chat_id, text)
             else:
                 text = 'I don\'t understand your message, please Tap "Get started"'
-                send_text(message.from_user, message.chat_id, text, ["Get started"])
+                send_text(message.from_user, message.chat_id, ["Get started"])
 
             if 'Get started' in message.body:
-                send_text(message.from_user, message.chat_id, text, ["what Business place where you?"])
+                send_text(message.from_user, message.chat_id, ["what Business place where you?"])
                     
 
     return Response(status=200)
