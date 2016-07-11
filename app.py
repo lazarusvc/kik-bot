@@ -1,5 +1,5 @@
 from flask import Flask, request, Response
-#*****************************************
+#****************************************#
 from kik import KikApi, Configuration
 from kik.messages import (LinkMessage, SuggestedResponseKeyboard, TextMessage,
                           TextResponse, messages_from_json)
@@ -38,19 +38,16 @@ def incoming():
     for message in messages:
         if isinstance(message, TextMessage):
 
-            '''
-            kik.send_messages([
-                TextMessage(
-                    to=message.from_user,
-                    chat_id=message.chat_id,
-                    body=message.body) ])
-            '''
-            if 'Hi' in message.body:
-                text = 'Hi {0}!'.format(message.from_user)
+            if 'Hi' in message.body or 'Hello' in message.body:
+                text = 'Hi {0}! Welcome to Suggestionbot'.format(message.from_user)
                 send_text(message.from_user, message.chat_id, text)
             else:
-                text = 'I don\'t understand message'
+                text = 'I don\'t understand your message, please Tap "Get started"'
                 send_text(message.from_user, message.chat_id, text, ["Get started"])
+
+            if 'Get started' in message.body:
+                send_text(message.from_user, message.chat_id, text, ["what Business place where you?"])
+                    
 
     return Response(status=200)
 
