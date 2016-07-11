@@ -1,12 +1,22 @@
 from flask import Flask, request, Response
+import os
 #****************************************#
 from kik import KikApi, Configuration
 from kik.messages import (LinkMessage, SuggestedResponseKeyboard, TextMessage,
                           TextResponse, messages_from_json)
 
+
+#**********************************************************#
+# // Kik Bot Authentication globals
+#**********************************************************#
+BOT_USERNAME = os.environ.get('BOT_USERNAME', 'Suggestionbot')
+BOT_API_KEY = os.environ.get('BOT_API_KEY', 'de3b3ecd-f085-44a0-9103-f899467ecdf4')
+BOT_WEBHOOK = os.environ.get('BOT_WEBHOOK', 'https://calm-caverns-74991.herokuapp.com/incoming')
+
+
 app = Flask(__name__)
-kik = KikApi("Suggestionbot", "de3b3ecd-f085-44a0-9103-f899467ecdf4")
-kik.set_configuration(Configuration(webhook="https://calm-caverns-74991.herokuapp.com/incoming"))
+kik = KikApi(BOT_USERNAME, BOT_API_KEY)
+kik.set_configuration(Configuration(webhook=BOT_WEBHOOK))
 
 #**********************************************************#
 # // Kik send.message global function w/
@@ -43,10 +53,10 @@ def incoming():
                 send_text(message.from_user, message.chat_id, text)
             else:
                 text = 'I don\'t understand your message, please Tap "Get started"'
-                send_text(message.from_user, message.chat_id, ["Get started"])
+                send_text(message.from_user, message.chat_id, text, ["Get started"])
 
             if 'Get started' in message.body:
-                send_text(message.from_user, message.chat_id, ["what Business place where you?"])
+                send_text(message.from_user, message.chat_id, 'Alrightee ... ', ["what Business place where you?"])
                     
 
     return Response(status=200)
