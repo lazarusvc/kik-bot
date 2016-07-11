@@ -38,10 +38,6 @@ def incoming():
     for message in messages:
         if isinstance(message, TextMessage):
 
-            text = 'Hi, welcome to Suggestionbot, leave suggestions on the level of Service recieved at Julies'
-            text = 'to help make the world a better place' 
-            send_text(message.from_user, message.chat_id, text, ["Get started"])
-
             '''
             kik.send_messages([
                 TextMessage(
@@ -51,9 +47,10 @@ def incoming():
             '''
             if 'Hi' in message.body:
                 text = 'Hi {0}!'.format(message.from_user)
+                send_text(message.from_user, message.chat_id, text)
             else:
                 text = 'I don\'t understand message'
-                send_text(message.from_user, message.chat_id, text, ["Okay! What ever..."])
+                send_text(message.from_user, message.chat_id, text, ["Get started"])
 
     return Response(status=200)
 
