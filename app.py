@@ -47,9 +47,7 @@ def incoming():
     messages = messages_from_json(request.json['messages'])
     for message in messages:
         if isinstance(message, TextMessage):
-
-            welcome = ["Hello", "Aye", "Hi", "Sup", "Yo"]
-            if str(welcome)[1:-1] in message.body:
+            if "Hi" in message.body:
                 text = 'Hi {0}! Welcome to Suggestionbot'.format(message.from_user)
                 send_text(message.from_user, message.chat_id, text)
             elif 'Get started' in message.body:
