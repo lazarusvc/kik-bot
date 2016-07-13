@@ -41,6 +41,7 @@ def send_text(user, chat_id, body, keyboards=[]):
 #**********************************************************#
 @app.route('/incoming', methods=['POST'])
 def incoming():
+    welcome = ["Hi", "Yo", "Hello", "Sup", "Aye"]
     if not kik.verify_signature(request.headers.get('X-Kik-Signature'), request.get_data()):
         return Response(status=403)
 
@@ -48,7 +49,6 @@ def incoming():
     for message in messages:
         if isinstance(message, TextMessage):
 
-            welcome = ["Hi", "Yo", "Hello", "Sup", "Aye"]
 
             if welcome in message.body:
                 text = 'Hi {0}! Welcome to Suggestionbot'.format(message.from_user)
