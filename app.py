@@ -13,7 +13,7 @@ from kik.messages import (LinkMessage, SuggestedResponseKeyboard, TextMessage, T
 # // Kik Bot Authentication globals
 #**********************************************************#
 BOT_USERNAME = os.environ.get('BOT_USERNAME', 'rant.ai')
-BOT_API_KEY = os.environ.get('BOT_API_KEY', 'de3b3ecd-f085-44a0-9103-f899467ecdf4')
+BOT_API_KEY = os.environ.get('BOT_API_KEY', 'baf16ad1-d654-4a29-9db8-a24a811a8ebb')
 BOT_WEBHOOK = os.environ.get('BOT_WEBHOOK', 'https://rant-ai-kik-bot.herokuapp.com/incoming')
 
 
